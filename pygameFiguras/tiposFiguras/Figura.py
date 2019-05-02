@@ -1,14 +1,21 @@
-class Figura:
-    def __init__(self, nombre):
-        self.nombre = nombre
-        print("la figura es :" + self.nombre)
+class Figura(object):
+    _instance = None
 
-    def mostrar(self):
-        '''Sólo define una interfaz.'''
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(Figura, cls).__new__(
+                cls, *args, **kwargs)
+        return cls._instance
+
+    def setNombre(self, nombre):
+        self._nombre = nombre
+
+    def getNombre(self):
+        return self._nombre
+
+    def mostrarFigura(self):
         pass
 
-    def __del__(self):
-        print("El animal {} acaba de fallecer.".format(self.nombre))
 # https://www.tutorialspoint.com/python/python_pass_statement.htm
 
 # herencia en python
