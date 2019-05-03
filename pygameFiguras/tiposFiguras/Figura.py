@@ -23,5 +23,4 @@ class Figura(object):
         self.disponible = disponible
 
     def mostrarFigura(self):
-
-        return "soy  " + self.nombre
+        pass

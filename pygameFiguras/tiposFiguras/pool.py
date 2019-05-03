@@ -2,7 +2,6 @@ import random
 from tiposFiguras.Cuadrado import Cuadrado
 from tiposFiguras.Circulo import Circulo
 from tiposFiguras.Triangulo import Triangulo
-from .Figura import Figura
 
 
 class pool(object):

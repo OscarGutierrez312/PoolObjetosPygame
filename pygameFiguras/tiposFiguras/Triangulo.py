@@ -1,5 +1,8 @@
 from .Figura import Figura
+import pygame
 
 
 class Triangulo(Figura):
-    nombre = "adrian"
+    def mostrarFigura(self):
+        trianguloImg = pygame.image.load('imagenes/triangulo.png')
+        return trianguloImg
