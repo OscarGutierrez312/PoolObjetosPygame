@@ -1,45 +1,32 @@
 from tiposFiguras.Figura import Figura
 from tiposFiguras.Cuadrado import Cuadrado
-from .pool import ObjectPool
-# https://stackoverflow.com/questions/31875/is-there-a-simple-elegant-way-to-define-singletons
-# https://stackoverflow.com/a/1810367
+from tiposFiguras.Circulo import Circulo
+from tiposFiguras.Triangulo import Triangulo
+from tiposFiguras.pool import pool
+import pygame
 
 
 def main():
-    pass
+    pygame.init()
+    gameDisplay = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption('Figuras locas')
+    clock = pygame.time.Clock()
+
+    salida = False
+    while not salida:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                salida = True
+            print(event)
+        pygame.display.update()
+        clock.tick(30)
+    pygame.quit()
+
+    poolA = pool()
+
+    figuraUno = poolA.getFigura()
+    print(figuraUno.mostrarFigura())
 
 
 if __name__ == '__main__':
-    s1 = Figura()
-    s1.setNombre('ricardo')
-    s2 = Figura()
-    print(s2.getNombre())
-    if (id(s1) == id(s2)):
-        print("Same")
-    else:
-        print("Different")
-
-    c1 = Cuadrado()
-    c2 = Cuadrado()
-
-    c1.setNombre('Cuadrado')
-    print(c2.getNombre())
-
-    print("fin del programa")
-
-    pool = ObjectPool().getInstance()
-
-    figura1 = pool.getResource()
-    figura2 = pool.getResource()
-
-    figura1.setNombre("triangulo1")
-    figura2.setNombre("triangulo2")
-
-    print(figura1.getNombre())
-    print(figura2.getNombre())
-
-    pool.returnResource(figura1)
-    pool.returnResource(figura2)
-
-    figura1 = None
-    figura2 = None
+    main()
